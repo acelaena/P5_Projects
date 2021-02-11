@@ -304,11 +304,12 @@ function drawPortrait(){
 }
 
 function preload() {
-    black_jack = loadFont('http://acelaena.github.io/fonts/BLACKJAR.TTF');
+    black_jack = loadFont('https://acelaena.github.io/fonts/BLACKJAR.TTF');
 }
 
 // Setup code goes here
 function setup() {
+    //black_jack = loadFont('http://acelaena.github.io/fonts/BLACKJAR.TTF');
     createCanvas(windowWidth, windowHeight-5);
     background('#fff3fa');
     strokeWeight(0);

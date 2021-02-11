@@ -1,10 +1,22 @@
+/*
+    (*)Project Name - Self Portrait
+          (*)by acelaena
+
+    (*)Overview - A self portrait using a pixel grid created in p5.js
+ 
+    ---------------------------------------------------------------------
+    (*)Notes: None for now. 
+
+*/
+
+
+
 const PXWIDTH = 32;
 const PXHEIGHT = 32;
 const SCALEFACTOR = 10;
 
 let pixel_canvas;
 let black_jack;
-
 
 function mouseClicked(){
 }
@@ -339,9 +351,4 @@ function setup() {
 // Draw code goes here
 function draw() {
     //console.log("");
-    //pixelCanvas[25][30].setColor(color(255,240,0));
-    
-    smooth();
-    fill('black');
-    //text("dummyText", width/2, height/5);
 }  

@@ -42,11 +42,12 @@ var gTextOffset = 20;
 
 // load all images into an array
 function preload() {
-  images[0] = loadImage('assets/one.png');
-  images[1] = loadImage('assets/two.png');
-  images[2] = loadImage('assets/three.png');
-  images[3] = loadImage('assets/four.png');
-  images[4] = loadImage('assets/five.png');
+  images[0] = loadImage('assets/one.PNG');
+  images[1] = loadImage('assets/two.PNG');
+  images[2] = loadImage('assets/three.PNG');
+  images[3] = loadImage('assets/four.PNG');
+  images[4] = loadImage('assets/five.PNG');
+  images[5] = loadImage('https://acelaena.github.io/images/sketch.PNG');
 }
 
 // Center drawing, drawFunction will be one for default
@@ -59,7 +60,7 @@ function setup() {
   textSize(24);
 
   // set to one for startup
-  drawFunction = drawOne;
+  drawFunction = drawSplash;
 }
 
 // Very simple, sets the background color and calls your state machine function
@@ -115,8 +116,27 @@ drawFive = function() {
 
 //========= TEMPLATE: add or change interface functions, as you like =========
 
+//-- drawSplash() will draw the image at index 5 from the array
+drawSplash = function() {
+   image(images[5],width/2, height/2);
+}
+
+drawInfo = function(){
+    var infoText = ["Use number keys to jump to a specific state.", "Hit 'S' to return to the splash screen.", "Click again to start states."] 
+    for(var i = 0; i<infoText.length; i++){
+        text(infoText[i], width/2, height/3+i*50);
+    }
+}
+
+//========= TEMPLATE: add or change interface functions, as you like =========
+
 // Change the drawFunction variable based on your interaction
 function keyTyped() {
+  if( drawFunction === drawSplash ) {
+      drawFunction === drawInfo; 
+    return;
+  }
+
   if( key === '1' ) {
   	drawFunction = drawOne;
   }
@@ -131,5 +151,18 @@ function keyTyped() {
   }
   else if( key === '5' ) {
   	drawFunction = drawFive;
+  }
+
+  else if( key === 's' ) {
+    drawFunction = drawSplash;
+  }
+}
+
+function mousePressed() {
+  // only change state if we are in splash screen
+  if( drawFunction === drawSplash ) {
+    drawFunction = drawInfo;
+  } else if( drawFunction === drawInfo ){
+    drawFunction = drawOne;
   }
 }

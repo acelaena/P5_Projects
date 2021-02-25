@@ -20,7 +20,7 @@ let blueprint_mini;
 function houseSetup(){
     house = new House(); 
     
-    var greenhouse = new Room("Greenhouse", "An art studio filled with plants, art, and comfy furniture. One wall is filled with ceiling to floor windows, and the other is painted with a magical landscape. This probably used to be the living room.", loadImage('https://acelaena.github.io/assets/greenhouse.PNG')); 
+    var greenhouse = new Room("Greenhouse", "An art studio filled with plants, art, and comfy furniture. One wall is filled with ceiling to floor windows,\n and the other is painted with a magical landscape. This probably used to be the living room.", loadImage('https://acelaena.github.io/assets/greenhouse.PNG')); 
         house.addRoom(greenhouse);
         house.setEntrance(greenhouse);
     
@@ -62,10 +62,12 @@ function houseSetup(){
     Draws an object of type Room to the canvas. 
 */
 function drawRoom(){
-    image(currentRoom.getImg(), width/2, height-width*5/9, width, width*5/9);
+    image(currentRoom.getImg(), 0, 0, width, width*5/9);
 
     fill(0,0,0);
     textAlign(CENTER);
+    
+    
 
     textSize(24);
     textStyle(BOLD);
@@ -75,7 +77,7 @@ function drawRoom(){
     textStyle(ITALIC);
     text(currentRoom.getInfo(), 0, 570, width-40, 100);
 
-    drawMinimap();
+    //drawMinimap();
 }
 
 /*
@@ -93,18 +95,22 @@ function drawMinimap(){
     Draws the splash screen. 
 */
 function drawSplash() {
-   image(splash, width/2, height/2);
+   image(splash, 0, 0, width, width*5/9);
 }
 
 /*
     Draws the Info screen. 
 */
 function drawInfo(){
-    image(blueprint, width/2, height/2);
-    var infoText = ["Use WASD directions to navigate the rooms of the house.", "Hit 'X' to return to the splash screen, \nand I to return to this screen.", "Click or press any key again to start house tour."] 
+    image(blueprint, 0, 0, width, width*5/9);
+    fill(255);
+    textStyle(ITALIC);
+    textSize(22);
+    var infoText = ["Use WASD directions to navigate the rooms of the house.", "Hit 'X' to return to the splash screen.", "Click or press any key again to start house tour."] 
     for(var i = 0; i<infoText.length; i++){
-        text(infoText[i], width/2, height/3+i*50);
+        text(infoText[i], width/2, height+i*25-60);
     }
+    fill(0);
 }
 
 /**
@@ -177,16 +183,17 @@ function mousePressed() {
 
 
 function preload() {
-    splash = loadImage('https://acelaena.github.io/images/sketch.PNG');
+    splash = loadImage('https://acelaena.github.io/assets/splash.PNG');
     blueprint = loadImage('https://acelaena.github.io/assets/blueprint.PNG');
-    blueprint_mini = loadImage('https://acelaena.github.io/assets/blueprint_sm.PNG');
+    //blueprint_mini = loadImage('https://acelaena.github.io/assets/blueprint_sm.PNG');
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+    //remove scrollbar width because p5 smelly and I cant do my elegant no-scrollbar trick
+  createCanvas(windowWidth-20, windowHeight-20);
 
   // Center our drawing objects
-    imageMode(CENTER);
+    textFont('Quicksand');
     textAlign(CENTER);
     textSize(24);
     

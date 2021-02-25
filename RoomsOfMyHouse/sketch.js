@@ -6,8 +6,10 @@
     A simple state machine that utilizes the classes in Rooms.js. 
 
 	Notes:
-	- None for now
     - Kitchen image source: https://www.extraspace.com/blog/home-organization/room-organization/design-a-minimalist-kitchen-with-these-ideas/
+    - add navigation prompts
+    - add low opacity background box behind text
+    - p5 smelly I could do this faster with html/css/js
 
 */
 var drawFunction;
@@ -69,6 +71,8 @@ function drawRoom(){
     textSize(18);
     fill('#18134d');
     text("Use WASD directions to navigate the rooms of the house.", width/2, 50);
+    
+    
 
     textSize(24);
     textStyle(BOLD);

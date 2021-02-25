@@ -64,11 +64,11 @@ function houseSetup(){
 */
 function drawRoom(){
     image(currentRoom.getImg(), 0, 0, width, width*5/9);
-
-    fill(0,0,0);
+    
     textAlign(CENTER);
-    
-    
+    textSize(18);
+    fill('#18134d');
+    text("Use WASD directions to navigate the rooms of the house.", width/2, 50);
 
     textSize(24);
     textStyle(BOLD);
@@ -111,7 +111,6 @@ function drawInfo(){
     for(var i = 0; i<infoText.length; i++){
         text(infoText[i], width/2, height+i*25-80);
     }
-    fill(0);
 }
 
 /**
@@ -197,6 +196,7 @@ function setup() {
     textFont('Quicksand');
     textAlign(CENTER);
     textSize(24);
+    
     
     drawFunction = drawSplash;
 

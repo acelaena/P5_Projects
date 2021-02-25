@@ -8,7 +8,7 @@
 	Notes:
     - Kitchen image source: https://www.extraspace.com/blog/home-organization/room-organization/design-a-minimalist-kitchen-with-these-ideas/
     - add navigation prompts
-    - add low opacity background box behind text
+    - add low opacity background box behind text? how to do
     - p5 smelly I could do this faster with html/css/js
 
 */

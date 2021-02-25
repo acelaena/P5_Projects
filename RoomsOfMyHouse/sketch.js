@@ -7,6 +7,7 @@
 
 	Notes:
 	- None for now
+    - Kitchen image source: https://www.extraspace.com/blog/home-organization/room-organization/design-a-minimalist-kitchen-with-these-ideas/
 
 */
 var drawFunction;
@@ -106,9 +107,9 @@ function drawInfo(){
     fill(255);
     textStyle(ITALIC);
     textSize(22);
-    var infoText = ["Use WASD directions to navigate the rooms of the house.", "Hit 'X' to return to the splash screen.", "Click or press any key again to start house tour."] 
+    var infoText = ["Use WASD directions to navigate the rooms of the house.", "Hit 'X' to return to the splash screen.", "Hit 'I' to return to the map screen.", "Click or press any key again to start house tour."] 
     for(var i = 0; i<infoText.length; i++){
-        text(infoText[i], width/2, height+i*25-60);
+        text(infoText[i], width/2, height+i*25-80);
     }
     fill(0);
 }
@@ -190,7 +191,7 @@ function preload() {
 
 function setup() {
     //remove scrollbar width because p5 smelly and I cant do my elegant no-scrollbar trick
-  createCanvas(windowWidth-20, windowHeight-20);
+  createCanvas(windowWidth-12, windowHeight-12);
 
   // Center our drawing objects
     textFont('Quicksand');

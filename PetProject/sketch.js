@@ -49,7 +49,7 @@ function petSetup(){
                 "https://acelaena.github.io/assets2/rexlapis.PNG", 
                 "https://acelaena.github.io/assets2/bunpup.PNG",
                 "https://acelaena.github.io/assets2/bird.PNG",
-                "https://acelaena.github.io/assets2/kitty.PNG" ];
+                "https://acelaena.github.io/assets2/snek.PNG" ];
     let pSpe = ["calico winged messenger kitty",
                 "black heraldic leonine",
                 "long-eared florapup",
@@ -99,7 +99,7 @@ function drawGetPet(){
 }
 
 function namePet(){
-    var input_text = input.value().trim();
+    var input_text = input.value().trim().slice(0,15);
     console.log("\""+input_text+"\"");
     if (input_text == null || input_text == ""){
         textAlign(CENTER);
@@ -146,7 +146,7 @@ function drawInfoScreen(){
     
     textSize(14);
     textStyle(NORMAL);
-    text(personalities[pet.personality], width/2-SCREENSIZE/2+IMGSIZE+50, SCREENSIZE*2/5 + 140, SCREENSIZE - (width/2-SCREENSIZE/2+IMGSIZE+50));
+    text(personalities[pet.personality], width/2-SCREENSIZE/2+IMGSIZE+50, SCREENSIZE*2/5 + 140, SCREENSIZE -(IMGSIZE + 50));
     
     //todo: exit graphics, 
 }
@@ -209,7 +209,7 @@ function drawBadEnd(){
     fill('#000');
     textSize(16);
 
-    text(pet.name + " ran away...", width/2, height/2+IMGSIZE/3+90);
+    text(pet.name + " ran away... \n Refresh to try again!", width/2, height/2+IMGSIZE/3+90);
 
     textAlign(LEFT);
 }
@@ -223,7 +223,7 @@ function drawGoodEnd(){
     fill('#000');
     textSize(16);
 
-    text(pet.name + " was happily adopted by " + adopters[a]+ "!", width/2, height/2+IMGSIZE/3+90);
+    text(pet.name + " was happily adopted by " + adopters[a]+ "!\n Refresh to try again!", width/2, height/2+IMGSIZE/3+90);
 
     textAlign(LEFT);
 }
@@ -363,11 +363,13 @@ function keyTyped() {
     if (drawFunction === drawAdoptScreen && adoptSwitch){ 
         if(key === 'y'){
             adopted = true;
+            adoptSwitch = false; 
             drawFunction = drawGoodEnd;
         } else if( key === 'n'){
             adopted = false;
             adoptSwitch = false; 
             msgs.push("You have decided to not let go of "+pet.name);
+            a = rand(0,2);
             drawFunction = drawActionScreen;
         }
     }

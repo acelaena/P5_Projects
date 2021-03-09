@@ -133,6 +133,7 @@ class Pet{
         this.happiness -= 10 + 5 - this.dirtiness;
         this.health += 5 + 2 * this.dirtiness; 
         if (this.health > 100) {this.health = 100;}
+        this.dirtiness = 0;
         return this.name + " might not like getting bathed, but they are squeaky clean and smelling great now!" 
     }
     
@@ -144,7 +145,7 @@ class Pet{
         if (this.hunger <=10){ 
             this.health -=5;
             outputStr.push(this.name + " is starving...");
-        } else {
+        } else if (this.hunger <=70) {
             outputStr.push(this.name + " is a bit hungry...");
         }
         
@@ -170,7 +171,6 @@ class Pet{
         this.dirtiness++;
         
         if (this.hunger <= 0 || this.happiness <= 0 || this.health <= 0){
-            outputStr = [this.name + " ran away..."]; 
             this.KILLGAME = true; 
         }   
         return outputStr;

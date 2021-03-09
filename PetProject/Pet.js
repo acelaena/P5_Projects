@@ -27,6 +27,7 @@ class Pet{
         this.dirtiness = 0; 
         this.daysNotWalked = 0; 
         this.isWalked = false;
+        this.KILLGAME = false; 
     }
     
     placePet(x, y, scale = 1){
@@ -103,6 +104,8 @@ class Pet{
         //the lower your current stats are, the more stats you gain
         this.health += Math.floor((100 - this.health) / 10 + 1);
         this.happiness += Math.floor((100 - this.happiness) / 10 + 1);
+        if (this.happiness > 100) {this.happiness = 100;}
+        if (this.health > 100) {this.health = 100;}
         this.hunger -= 5;
         
         //specific outcome modifiers 
@@ -121,6 +124,7 @@ class Pet{
             return this.name + " is too sickly to play right now..."
         } 
         this.happiness += rand(5,10);
+        if (this.happiness > 100) {this.happiness = 100;}
         this.hunger -= 5; 
         return this.name + " had a great time playing with you!"
     }
@@ -128,17 +132,20 @@ class Pet{
     bath(){
         this.happiness -= 10 + 5 - this.dirtiness;
         this.health += 5 + 2 * this.dirtiness; 
+        if (this.health > 100) {this.health = 100;}
         return this.name + " might not like getting bathed, but they are squeaky clean and smelling great now!" 
     }
     
     age(){ // daily reset 
-        var outputStr = [];
+        var outputStr = ["You and " + this.name +" slept well last night!"];
         //check hunger
         if (this.hunger <=40){ this.health -=1; }
         if (this.hunger <=20){ this.health -=2; }
         if (this.hunger <=10){ 
             this.health -=5;
             outputStr.push(this.name + " is starving...");
+        } else {
+            outputStr.push(this.name + " is a bit hungry...");
         }
         
         //check cleanliness
@@ -159,9 +166,18 @@ class Pet{
         
         //daily hunger/happiness loss
         this.hunger -= 10;
-        this.happiness -= 10;
+        this.happiness -= 5;
+        this.dirtiness++;
         
+        if (this.hunger <= 0 || this.happiness <= 0 || this.health <= 0){
+            outputStr = [this.name + " ran away..."]; 
+            this.KILLGAME = true; 
+        }   
         return outputStr;
+    }
+    
+    adoptable(){
+        return this.happiness >= 60 && this.hunger >= 60 && this.health >=60;
     }
 }
     

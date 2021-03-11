@@ -14,54 +14,61 @@
 *********************************************************************************************************************/
 
 class Timer {
-  // Store the duration and start the timer
-  constructor( _duration ) {
+// Store the duration and start the timer
+constructor( _duration ) {
+this.startTime = millis();
+this.duration = _duration;
+}
+
+// just start the timer
+start() { 
+  if (expired){
     this.startTime = millis();
-    this.duration = _duration;
   }
-  
-  // just start the timer
-  start() { 
-    this.startTime = millis();
-  }
-  
-  // set the duration, doesn't restart the timer
-  setTimer(_duration) {
-    this.duration = _duration;
-  }
-  
-  // returns true if the timer is expired, e.g. if millis() is greater than startTime + duration
-  expired() {
+}
+    
+//restart timer
+reset(){
+    this.startTime = milis(); 
+}
+
+// set the duration, doesn't restart the timer
+setTimer(_duration) {
+this.duration = _duration;
+}
+
+// returns true if the timer is expired, e.g. if millis() is greater than startTime + duration
+expired() {
     return (this.startTime + this.duration) < millis();
-  }
-  
-  // returns remaining time in milliseconds, zero if timer is done
-  getRemainingTime() {
-    if( this.expired() )
-      return 0;
-      
-    return  (this.startTime + this.duration) - millis();
-  }  
+}
 
-  // returns remaining % of timer, 0.0 through 1.0
-  getPercentageRemaining() {
-    if( this.duration === 0 )  // avoid div by zero error
-      return 0.0;
+// returns remaining time in milliseconds, zero if timer is done
+getRemainingTime() {
+if( this.expired() )
+  return 0;
 
-    if( this.expired() )
-     return 0.0;
-      
-    return this.getRemainingTime()/this.duration;
-  }
-  
-  // returns elapsed % of timer, 0.0 through 1.0
-  getPercentageElapsed() {
-    if( this.duration === 0 )  // avoid div by zero error
-      return 0.0;
+return  (this.startTime + this.duration) - millis();
+}  
 
-    if( this.expired() )
-     return 1.0;
-      
-    return 1.0 - (this.getRemainingTime()/this.duration);
-  }	 	
+// returns remaining % of timer, 0.0 through 1.0
+getPercentageRemaining() {
+if( this.duration === 0 )  // avoid div by zero error
+  return 0.0;
+
+if( this.expired() )
+ return 0.0;
+
+return this.getRemainingTime()/this.duration;
+}
+
+// returns elapsed % of timer, 0.0 through 1.0
+getPercentageElapsed() {
+if( this.duration === 0 )  // avoid div by zero error
+  return 0.0;
+
+if( this.expired() )
+ return 1.0;
+
+return 1.0 - (this.getRemainingTime()/this.duration);
+}	 	
 }

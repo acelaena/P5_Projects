@@ -1,9 +1,3 @@
-const PXWIDTH = 32;
-const PXHEIGHT = 32;
-const SCALEFACTOR = 10;
-
-let pixel_canvas;
-
 class Pixel{
     constructor(xpos, ypos, col, sca = 10, xoff = 0, yoff = 0){
         this.xCoord = xpos;
@@ -30,10 +24,10 @@ class PixelCanvas{
         this.xWidth = xpx;
         this.yHeight = ypx;
         this.scale = sca;
-        
-        this.pixelCanvas = new Array(this.yHeight);
+                
+        this.pixelCanvas = new Array(this.xWidth);
         for (var i = 0; i < this.pixelCanvas.length; i++){
-            this.pixelCanvas[i] = new Array(this.xWidth);
+            this.pixelCanvas[i] = new Array(this.yHeight);
         }
         
         for(i = 0; i < this.yHeight; i++){ //rows

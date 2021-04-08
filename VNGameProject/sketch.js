@@ -50,6 +50,18 @@ function preload() {
     for (i = 0; i<9; i++){
         wendy_sprite[i] = loadImage("https://acelaena.github.io/assets3/exp_"+ i + ".PNG");
     }  
+    
+    textClicker = new Clickable(); 
+    textClicker.color = '#0000'; 
+    textClicker.text = '';
+    textClicker.strokeWeight = 0;  
+    textClicker.resize(960, 150);
+    textClicker.cornerRadius = 20;
+    textClicker.locate(center_x-480, 450);
+    textClicker.onPress = function(){  //When myButton is pressed
+        drawAgain = true;
+        console.log("clicky!");
+    }
 }
 
 function setup() {

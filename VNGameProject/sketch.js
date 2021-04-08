@@ -11,6 +11,7 @@ const CANVAS_WIDTH = 960;
 const CANVAS_HEIGHT= 600;
 var center_x;
 var center_y;
+var CANVAS_LEFT;
 
 const NEUTRAL = 0;
 const HAPPY = 1;
@@ -35,14 +36,12 @@ function keyTyped() {
     console.log(key);
 }
 
-function wendyExp(expression){
-    image(wendy_sprite[expression], center_x - 480, 160, 300, 300);
-}
-function wendyText(words){
+function wendyBox(expression, words){
+    image(wendy_sprite[expression], CANVAS_LEFT, 160, 300, 300);
     fill("#3f6680");
-    rect(center_x-480, 450, 960, 150, 20);
+    rect(CANVAS_LEFT, 450, 960, 150, 20);
     fontStyle();
-    text(words, center_x - 440, 460, 920, 130);
+    text(words, CANVAS_LEFT+40, 460, 920, 130);
 }
     
 /**
@@ -58,24 +57,13 @@ function preload() {
     for (i = 0; i<9; i++){
         wendy_sprite[i] = loadImage("https://acelaena.github.io/assets3/exp_"+ i + ".PNG");
     }  
-    
-    textClicker = new Clickable(); 
-    textClicker.color = '#0000'; 
-    textClicker.text = '';
-    textClicker.strokeWeight = 0;  
-    textClicker.resize(960, 150);
-    textClicker.cornerRadius = 20;
-    textClicker.locate(center_x-480, 450);
-    textClicker.onPress = function(){  //When myButton is pressed
-        drawAgain = true;
-        console.log("clicky!");
-    }
 }
 
 function setup() {
     createCanvas(windowWidth-12, windowHeight-12);
     center_x = width/2;
     center_y = height/2; 
+    CANVAS_LEFT = center_x - CANVAS_WIDTH;
     n = 0;
     
     textClicker = new Clickable(); 
@@ -84,19 +72,18 @@ function setup() {
     textClicker.strokeWeight = 0;  
     textClicker.resize(960, 150);
     textClicker.cornerRadius = 20;
-    textClicker.locate(center_x-480, 450);
+    textClicker.locate(CANVAS_LEFT, 450);
     textClicker.onPress = function(){  //When myButton is pressed
         drawAgain = true;
         console.log("clicky!");
-    } 
+    }
 }
 
 function draw() {
     if (drawAgain){
         fill("#ddd");
-        rect(center_x-480, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-        wendyExp(n);
-        wendyText("Hello world! My name is Wendy!");
+        rect(CANVAS_LEFT, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        wendyBox(n,"Hello world! My name is Wendy!");
         drawAgain = false; 
         n++;
         if (n > 8){ n = 0;}

@@ -2,7 +2,8 @@ function rand(min, max) {
   return Math.round(Math.random() * (max-min) + min);
 }
 
-function fontStyle(fsize = 12, align = LEFT, style = NORMAL, lineheight = fsize*1.2, font = null){
+function fontStyle(fsize = 16, color = "#000", align = LEFT, style = NORMAL, lineheight = fsize*1.2, font = null){
+    fill(color);
     textSize(fsize);
     textAlign(align);
     textStyle(style);
@@ -13,6 +14,6 @@ function fontStyle(fsize = 12, align = LEFT, style = NORMAL, lineheight = fsize*
     }
 }
 
-function flip(){
+function flipCoin(){
     return rand (-1, 1) > 0; 
 }

@@ -9,15 +9,23 @@
 */
 const CANVAS_WIDTH = 960;
 const CANVAS_HEIGHT= 600;
-
 var center_x;
 var center_y;
 
+const NEUTRAL = 0;
+const HAPPY = 1;
+const EXCITED = 2;
+const THINK = 3; 
+const DEPRESSED = 4;
+const CRY = 5;
+const FRUSTRATED = 6;
+const ANGRY = 7;
+const FEAR = 8;
 var wendy_sprite = [];
+
 var textClicker; 
-
-
 var drawAgain = true;
+
 var n;
 
 /*

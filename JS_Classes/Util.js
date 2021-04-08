@@ -14,6 +14,6 @@ function fontStyle(fsize = 16, color = "#000", align = LEFT, style = NORMAL, lin
     }
 }
 
-function flipCoin(){
+function flip(){
     return rand (-1, 1) > 0; 
 }

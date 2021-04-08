@@ -18,6 +18,7 @@ var textClicker;
 
 
 var drawAgain = true;
+var n;
 
 /*
     Keyboard navigation support. While on a non-room screen, all keys will advance the screen.
@@ -27,7 +28,7 @@ function keyTyped() {
 }
 
 function wendyExp(expression){
-    image(wendy_sprite[expression], center_x - 480, 60, 400, 400);
+    image(wendy_sprite[expression], center_x - 480, 160, 300, 300);
 }
 function wendyText(words){
     fill("#3f6680");
@@ -55,6 +56,7 @@ function setup() {
     createCanvas(windowWidth-12, windowHeight-12);
     center_x = width/2;
     center_y = height/2; 
+    n = 0;
     
     textClicker = new Clickable(); 
     textClicker.color = '#0000'; 
@@ -73,8 +75,11 @@ function draw() {
     if (drawAgain){
         fill("#ddd");
         rect(center_x-480, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-        wendyExp(0);
+        wendyExp(n);
         wendyText("Hello world! My name is Wendy!");
         drawAgain = false; 
+        n++;
+        if (n > 8){ n = 0;}
     }
+    textClicker.draw();
 }

@@ -4,6 +4,8 @@
 ### Overview
 A visual novel-type game in which you follow the story of Wendy (WendyWonderly), a comic artist, who's struggling to tell the story he/she/they want to tell because of online social justice marauders harrassing them. The events in this game are based on real events and anectdotes I've experienced or witnessed.
 
+The comic script, since the art never got finished: https://docs.google.com/document/d/13UrlBI4eC4ty7DIUSPh7Y8cLyvpjOcwaEr7WZsochUc/edit
+
 
 ### Technical Details
 >> Custom Classes: 

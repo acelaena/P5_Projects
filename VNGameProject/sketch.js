@@ -59,7 +59,7 @@ var icons = [];
 
 //debug variables
 var n = 0;
-var debug = true;
+var debug = false;
 //DEBUG MODE HAS BUGS, PLEASE IGNORE THE BUGS THEY ARE NOT GAMEBREAKING THANKS
 
 /*
